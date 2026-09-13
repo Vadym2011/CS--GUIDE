@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS2 Academy | Гайди для новачків</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+    <header>
+        <div class="header-top">
+            <div class="logo">CS2 <span>ACADEMY</span></div>
+            <div class="header-controls" id="header-controls">
+                <!-- Динамічні кнопки або профіль будуть тут через JS -->
+            </div>
+        </div>
+        <p>Твій шлях від новачка до глобала</p>
+        <div class="progress-bar-container">
+            <span id="progress-text">Вивчено гайдів: 0 / 3</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <nav class="menu-nav">
+            <button class="nav-btn active" onclick="showGuide('economy', this)">Економіка</button>
+            <button class="nav-btn" onclick="showGuide('nades', this)">Основи гранат</button>
+            <button class="nav-btn" onclick="showGuide('aim', this)">Стрільба та Аїм</button>
+        </nav>
+
+        <section id="guide-content" class="content-box">
+            <!-- Динамічний контент гайдів -->
+        </section>
+
+        <!-- Калькулятор закупки -->
+        <section class="calculator-box">
+            <h3>🧮 Міні-калькулятор закупки (Бюджет раунду)</h3>
+            <p>Введіть кількість грошей у команди для перевірки:</p>
+            <div class="calc-controls">
+                <input type="number" id="teamMoney" placeholder="Напр. 3500" min="0" max="16000">
+                <button onclick="checkBuyStatus()">Перевірити бай</button>
+            </div>
+            <div id="calcResult" class="calc-result">Введіть суму вище</div>
+        </section>
+
+        <!-- Інтерактивний тест -->
+        <section class="quiz-box">
+            <h3>🎯 Перевір себе: Тест для новичка</h3>
+            <div id="quiz-container">
+                <p id="quiz-question" style="margin-bottom: 1rem; font-weight: 600;"></p>
+                <div id="quiz-options" class="quiz-options"></div>
+                <div id="quiz-result" class="quiz-result"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Модальне вікно для Входу / Реєстрації -->
+    <div id="auth-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="modal-title" style="color: var(--accent); margin-bottom: 1rem;">Авторизація</h3>
+            
+            <div class="form-group">
+                <label>Логін або пошта:</label>
+                <input type="text" id="auth-username" class="modal-input" placeholder="Введіть логін">
+            </div>
+            <div class="form-group">
+                <label>Пароль:</label>
+                <input type="password" id="auth-password" class="modal-input" placeholder="Введіть пароль">
+            </div>
+
+            <button id="modal-submit-btn" class="modal-submit" onclick="handleAuth()">Підтвердити</button>
+            <div id="auth-msg" class="calc-result"></div>
+        </div>
+    </div>
+
+    <!-- Модальне вікно профілю (Вибір аватара та вихід) -->
+    <div id="profile-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeProfileModal()">&times;</span>
+            <h3 style="color: var(--accent); margin-bottom: 1rem;">Мій профіль</h3>
+            <p id="profile-username-display" style="margin-bottom: 1rem; font-weight: 650;"></p>
+            
+            <div class="form-group">
+                <label>Оберіть аватарку:</label>
+                <div class="avatar-selection">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=counter1" class="avatar-option" onclick="selectAvatar(this.src)">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=counter2" class="avatar-option" onclick="selectAvatar(this.src)">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=counter3" class="avatar-option" onclick="selectAvatar(this.src)">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=counter4" class="avatar-option" onclick="selectAvatar(this.src)">
+                </div>
+            </div>
+
+            <button class="modal-submit logout-btn" onclick="logoutUser()" style="background-color: #e53e3e; margin-top: 1.5rem;">Вийти з акаунта</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 CS2 Academy. Успіхів на міді!</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
